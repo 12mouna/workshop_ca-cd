@@ -6,7 +6,7 @@ workflows:  #chenbeldi el appeli metkawna men jobs w feha steps
     jobs:
       - build
       - deploy_production: #bch ndeployiw elpp
-        requires: #maye5dem ken k ye5dem el build 
+         requires: #maye5dem ken k ye5dem el build 
           - build
 
 jobs:

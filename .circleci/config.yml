@@ -14,4 +14,4 @@ jobs:
     steps:
       - checkout #rani chenjib elcode
       - run: yarn install #kima npm install bch njib les dependances(ya9ra el fichier config.json w yanstalli les dependances elkol)
-    
+      - run: yarn test #chenraniw les test fel circle ci 

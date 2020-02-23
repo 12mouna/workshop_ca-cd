@@ -1,17 +1,17 @@
-version: 2.1 #teb3a circleci
+version: 2.1
 orbs:
-  heroku: circleci/heroku@0.0.10
-workflows:  #chenbeldi el appeli metkawna men jobs w feha steps
-  build_deploy:
-    jobs:
-      - build
-
+  node: circleci/node@1.1.6
 jobs:
-  build:
-    docker:
-      - image: circleci/node #3andhoum lesimages mte3houm bch ysobortiw el app
-    working_directory: ~/repo
+  build-and-test:
+    executor:
+      name: node/default
     steps:
-      - checkout #rani chenjib elcode
-      - run: yarn install #kima npm install bch njib les dependances(ya9ra el fichier config.json w yanstalli les dependances elkol)
-    
+      - checkout
+      - node/with-cache:
+          steps:
+            - run: npm install
+            - run: npm test
+workflows:
+    build-and-test:
+      jobs:
+        - build-and-test
